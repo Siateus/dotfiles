@@ -1,0 +1,159 @@
+{
+        "layer": "top",
+        "position": "top",
+        "reload_style_on_change": true,
+        "modules-left": ["custom/notification","clock","tray"],
+        "modules-center": ["hyprland/workspaces"],
+        "modules-right": ["temperature","group/expand","bluetooth","pulseaudio","battery"],
+
+
+        "hyprland/workspaces": {
+            "format": "{icon}",
+            "format-icons": {
+                "active": "",
+                "default": "",
+                "empty": ""
+            },
+            "persistent-workspaces": {
+                "*": [ 1,2,3,4,5 ]
+            }
+        },
+        "custom/notification": {
+            "tooltip": false,
+            "format": "",
+            "on-click": "swaync-client -t -sw",
+            "escape": true
+        },
+        "clock": {
+            "format": "{:%H:%M:%S} ",
+            "interval": 1,   
+            "tooltip-format": "<tt>{calendar}</tt>",
+            "calendar": {
+                "format": {
+                    "today": "<span color='#fAfBfC'><b>{}</b></span>"
+                }
+            },
+            "actions": {
+                "on-click-right": "shift_down",
+                "on-click": "shift_up"
+            }
+        },
+        "bluetooth": {
+            "format-on": "󰂯",
+	    "format-off": "󰂲", 
+	    "format-disabled": "󰂲",     
+	    "format-connected-battery": "{device_battery_percentage}% ",
+            "format-alt": "{device_alias} 󰂯",
+            "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+            "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+            "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+            "on-click-right": "blueman-manager"
+        }, 
+
+	"pulseaudio": {
+    		"format": "{volume}% {icon} {format_source}",
+    		"format-bluetooth": "{volume}%  {format_source}",
+    		"format-bluetooth-muted": " {icon} {format_source}",
+    		"format-muted": " {format_source}",
+    		"format-source": "",
+    		"format-source-muted": "",
+    		"format-icons": {
+      			"headphone": "",
+      			"hands-free": "",
+      			"headset": "",	
+      			"phone": "",
+      			"portable": "",
+      			"car": "",	
+      			"default": ["", "", ""]
+      		},
+    		"on-click": "pavucontrol"
+  	},
+
+        "battery": {
+           "states": {
+      	   "warning": 30,
+           "critical": 15
+   	},
+
+    "format": "{capacity}% {icon}",
+    "format-full": "{capacity}% {icon}",
+    "format-charging": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
+    "format-alt": "{time} {icon}",
+    // "format-good": "", // An empty format will hide the module
+    // "format-full": "",
+    "format-icons": ["", "", "", "", ""]        },
+        "custom/expand": {
+            "format": "",
+            "tooltip": false
+        },
+        "custom/endpoint":{
+            "format": "|",
+            "tooltip": false
+        },
+        "group/expand": {
+            "orientation": "horizontal",
+            "drawer": {
+                "transition-duration": 600,
+                "transition-to-left": true,
+                "click-to-reveal": true
+            },
+            "modules": ["custom/expand", "custom/colorpicker","cpu","memory","power-profiles-daemon","custom/endpoint"]
+        },
+        "custom/colorpicker": {
+            "format": "{}",
+            "return-type": "json",
+            "interval": "once",
+            "exec": "~/.config/waybar/scripts/colorpicker.sh -j",
+            "on-click": "~/.config/waybar/scripts/colorpicker.sh",
+            "signal": 1
+        },
+	"cpu": {
+    		"format": "{usage}% ",
+    		"tooltip": false
+  	},
+
+
+  	"memory": {
+    		"format": "{}% "
+  	},
+
+        "temperature": {
+           	"thermal-zone": 2,
+     	   	"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+     		"critical-threshold": 80,
+     		"format-critical": "{icon} {temperatureC}°C",
+     		"format": "{icon} {temperatureC}°C",
+     		"format-icons": ["", "", ""]          
+	},
+
+	 "power-profiles-daemon": {
+		"format": "{icon}",
+		"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    		"tooltip": true,
+    		"format-icons": {
+      			"default": "",
+      			"performance": "",
+      			"balanced": "",
+      			"power-saver": ""
+    		}
+  	  },
+	
+	 /* "network": {
+    		"format-wifi": "",  // Ícone de Wi-Fi (ou qualquer outro ícone que você preferir)
+    		"format-ethernet": "",  // Ícone para conexão com fio (Ethernet)
+    		"format-disconnected": "",  // Ícone quando a conexão estiver desconectada
+    		"tooltip-format-disconnected": "Sem conexão",
+    		"tooltip-format-wifi": "{essid} ({signalStrength}%) ",  // Exemplo de tooltip
+    		"tooltip-format-ethernet": "{ifname} 🖧 ",
+    		"on-click": "nm-applet"
+},*/
+
+
+        "tray": {
+            	"icon-size": 14,
+            	"spacing": 10
+        }
+} 
+

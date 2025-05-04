@@ -9,7 +9,7 @@
 
 button {
     font-family: 'CodeNewRoman Nerd Font Mono';
-    background-color: alpha(@color9,1);
+    background-color: rgba(50, 50, 50, 0.6);
     border-radius: 5px;
     background-repeat: no-repeat;
     background-position: center;
@@ -56,7 +56,7 @@ button {
     margin : 5px 5px 5px 200px;
 }
 button:focus{
-    background-color: alpha(@color5,1);
+    background-color: rgba(10, 10, 10, 0.8);
     color: #000000;
     background-position:center;
 }

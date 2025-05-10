@@ -1,5 +1,4 @@
-format = """ 
-\
+format = """\
 [](fg:#0056b3)\
 $os\
 [](bg:#0056b3 fg:#00a3ff)\
@@ -81,10 +80,10 @@ error_symbol = "[✗](bold red)"
 disabled = false
 
 [directory.substitutions]
-"Documents" = "󰈙 "
+"Documentos" = "󰈙 "
 "Downloads" = " "
-"Music" = "󰝚 "
-"Pictures" = " "
+"Músicas" = "󰝚 "
+"Imagens" = " "
 "Scripts" = "󰲋 "
 
 [fossil_branch]

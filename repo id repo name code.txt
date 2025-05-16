@@ -1,0 +1,72 @@
+# Atualize o sistema antes de começar
+sudo dnf update -y
+
+# Instale compiladores e ferramentas de desenvolvimento
+sudo dnf groupinstall "Development Tools" -y
+sudo dnf install cmake -y
+
+# Instale o Git
+sudo dnf install git -y
+
+# Instale editores de texto
+sudo dnf install vim nano -y
+
+# Instale Docker ou Podman
+sudo dnf install docker podman -y
+sudo systemctl enable --now docker
+sudo dnf install gcc make cmake git vim nano podman docker -y
+sudo dnf install rofi-wayland -y
+sudo dnf install bison -y
+sudo dnf install byacc -y
+sudo dnf install rofi-wayland waybar -y
+sudo dnf install java-21-openjdk -y
+sudo dnf install xorg-x11-drv-libinput
+sudo dnf install git cmake meson ninja obs-studio wayland-devel wayland-protocols-devel
+sudo dnf install extra-cmake-modules
+sudo dnf install wayland-protocols-devel
+
+
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+
+git clone https://github.com/xkbcommon/libxkbcommon.git
+cd libxkbcommon
+
+meson setup build
+meson compile -C build
+sudo meson install -C build
+
+sudo dnf install obs-studio-devel
+sudo dnf install git make gcc cmake meson ninja obs-studio wayland-devel wayland-protocols-devel
+sudo dnf install git mercurial meson ninja obs-studio wayland-devel wayland-protocols-devel wlroots-devel
+sudo dnf install qt5-qtX11Extras-devel
+sudo dnf install qt5-qtdeclarative-devel
+sudo dnf install kf5-kcoreaddons-devel kf5-ki18n-devel kf5-kwindowsystem-devel kf5-kcrash-devel
+sudo dnf install kpipewire-devel
+sudo dnf install qt6-qtbase-devel
+export Qt6Core_DIR=/usr/lib64/cmake/Qt6Core
+
+sudo dnf install git cmake meson ninja qt5-devel qt6-devel wayland-devel xorg-x11-server-Xwayland
+git clone https://aur.archlinux.org/wlrobs-hg.git
+cd wlrobs-hg
+meson setup build
+ninja -C build
+sudo cp build/libwlrobs.so /usr/lib64/obs-plugins/
+
+
+git clone https://github.com/KDE/xwaylandvideobridge.git
+cd xwaylandvideobridge
+mkdir -p build && cd build
+cmake ..
+make -j$(nproc)
+sudo make install
+
+
+sudo dnf copr enable solopasha/hyprland
+
+
+sudo dnf repolist
+sudo dnf install code google-chrome starship PyCharm hyprland
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.microsoft.Edge com.rtosta.zapzap org.pgadmin.pgadmin4 org.telegram.desktop rest.insomnia.Insomnia
+
